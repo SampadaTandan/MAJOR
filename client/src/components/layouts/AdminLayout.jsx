@@ -27,13 +27,13 @@ export const AdminLayout = () => {
               <li>
                 <NavLink to="/admin/users">
                   <FaUserLarge />
-                  users
+                  Users
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/admin/contacts">
                   <IoMdContact />
-                  contacts
+                  Contacts
                 </NavLink>
               </li>
               <li>
@@ -41,8 +41,10 @@ export const AdminLayout = () => {
                 Inventory
               </li>
               <li>
-                <IoAnalytics />
+                <NavLink to="/admin/analytics">
+                  <IoAnalytics />
                 Analytics
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/admin/status">

@@ -13,6 +13,9 @@ router
   .get(authMiddleware, adminMiddleware, adminController.getAllContacts);
 
 router
+  .get("/analytics", adminController.getAnalyticsData);
+
+router
   .route("/users/:id")
   .get(authMiddleware, adminMiddleware, adminController.getUserById);
 

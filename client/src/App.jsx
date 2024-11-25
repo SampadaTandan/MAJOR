@@ -13,8 +13,7 @@ import { AdminUsers } from "./pages/Admin-User";
 import { AdminContacts } from "./pages/Admin-Contacts";
 import { AdminUpdate } from "./pages/Admin-Update";
 import { AdminStatus } from "./pages/Admin-Status";
-
-//subscribe Suprantechnical channel for more awesome content.
+import AdminAnalytics from "./pages/Admin-Analytics"; // Correct import
 
 const App = () => {
   return (
@@ -34,6 +33,7 @@ const App = () => {
           <Route path="contacts" element={<AdminContacts />} />
           <Route path="status" element={<AdminStatus />} />
           <Route path="user/:id/edit" element={<AdminUpdate />} />
+          <Route path="/admin-analytics" element={<AdminAnalytics />} /> 
         </Route>
       </Routes>
     </Router>
