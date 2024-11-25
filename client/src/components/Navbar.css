@@ -1,0 +1,85 @@
+/* General reset for ul elements */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header container styling */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Logo styling */
+.logo-brand a {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo-brand a:hover {
+  color: #4caf50;
+}
+
+/* Navbar list styling */
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #4caf50;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  /* Center the logo on smaller screens */
+  .container {
+    flex-direction: column;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  /* Hamburger menu */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+  }
+}
