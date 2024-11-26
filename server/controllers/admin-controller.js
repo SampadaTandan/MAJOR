@@ -2,7 +2,7 @@ const User = require("../models/user-model");
 const Contact = require("../models/contact-model");
 const Card = require("../models/card-model"); // Import your Card model
 const mongoose = require("mongoose");
-
+const Analytics = require('../models/analytics-model');
 //*------------------------------------------
 //*User logic
 //*------------------------------------------
@@ -135,36 +135,24 @@ const updateFeature = async (req, res, next) => {
 
 //*------------------------------------------
 //*Analytics logic
-//*------------------------------------------
-const getAnalyticsData = async (req, res, next) => {
+//*----------------------------------------
+const getAnalyticsData = async (req, res) => {
   try {
-    // Fetch all cards or specific analytics data
-    const cards = await Card.find();
-
-    if (!cards || cards.length === 0) {
-      return res.status(404).json({ message: "No cards found for analytics" });
+    const analyticsData = await Analytics.find();
+    if (!analyticsData || analyticsData.length === 0) {
+      return res.status(404).json({ message: 'No analytics data found' });
     }
 
-const analyticsData = cards.map((card) => {
-  const profit =
-    (card.Market_Price - card.Base_Price) * card.Pieces_sold;
-  return {
-    Name: card.Name,
-    Profit: profit,
-    Pieces_sold: card.Pieces_sold,
-    Stock: card.Stock,
-    Material: card.Material,
-  };
-});
+    const summary = analyticsData.map(data => ({
+      product_name: data.product_name,
+      profit: data.profit,
+    }));
 
-console.log("Analytics Data:", analyticsData);
-return res.status(200).json(analyticsData);
-} catch (error) {
-console.error("Error in getAnalyticsData:", error);
-next(error);
-}
+    res.status(200).json(summary);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching admin analytics', error });
+  }
 };
-
 
 module.exports = {
   getAllUsers,

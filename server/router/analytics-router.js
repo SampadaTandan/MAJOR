@@ -2,16 +2,18 @@ const express = require("express");
 const router = express.Router();
 
 // Sample analytics data
-// Replace this with actual logic to fetch data from your database
-const analyticsData = [
-  { Name: "Product A", Profit: 1000 },
-  { Name: "Product B", Profit: 2000 },
-  { Name: "Product C", Profit: 1500 },
-];
+const analyticsController = require('../controllers/analytics-controller');
+const { validateAnalyticsData } = require('../middlewares/analytics-middleware');
+
+// Route to get all analytics data
+router.get('/', analyticsController.getAllAnalytics);
+
+// Route to add new analytics data
+router.post('/', validateAnalyticsData, analyticsController.addAnalytics);
 
 // Route to get all analytics data (for visualization, charts, etc.)
-router.get("/", (req, res) => {
-  res.json(analyticsData);
+router.get("/visualize", (req, res) => {
+  // You can fetch the analytics data from the DB or static for testing
+  res.json({ message: 'Analytics data for visualization' });
 });
-
 module.exports = router;
